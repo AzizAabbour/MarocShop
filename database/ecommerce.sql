@@ -1,13 +1,14 @@
 -- ==========================================================
--- MarocShop E-Commerce Database Schema & Initial Data
+-- Hayz E-Commerce Database Schema & Initial Data
 -- Compatible with MySQL 5.7+ / MySQL 8+ / MariaDB
 -- ==========================================================
 
-CREATE DATABASE IF NOT EXISTS `ecommerce` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+DROP DATABASE IF EXISTS `ecommerce`;
+CREATE DATABASE `ecommerce` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE `ecommerce`;
 
 -- 1. Users Table
-CREATE TABLE IF NOT EXISTS `users` (
+CREATE TABLE `users` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR(120) NOT NULL,
     `email` VARCHAR(150) NOT NULL UNIQUE,
@@ -20,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- 2. Categories Table
-CREATE TABLE IF NOT EXISTS `categories` (
+CREATE TABLE `categories` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR(100) NOT NULL,
     `description` TEXT NULL,
@@ -29,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- 3. Products Table
-CREATE TABLE IF NOT EXISTS `products` (
+CREATE TABLE `products` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `category_id` INT NOT NULL,
     `name` VARCHAR(200) NOT NULL,
@@ -37,13 +38,13 @@ CREATE TABLE IF NOT EXISTS `products` (
     `price` DECIMAL(10,2) NOT NULL,
     `old_price` DECIMAL(10,2) NULL,
     `stock` INT NOT NULL DEFAULT 0,
-    `image` VARCHAR(255) NULL,
+    `image` VARCHAR(500) NULL,
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT `fk_products_category` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- 4. Orders Table
-CREATE TABLE IF NOT EXISTS `orders` (
+CREATE TABLE `orders` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `user_id` INT NULL,
     `total` DECIMAL(10,2) NOT NULL,
@@ -57,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- 5. Order Items Table
-CREATE TABLE IF NOT EXISTS `order_items` (
+CREATE TABLE `order_items` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `order_id` INT NOT NULL,
     `product_id` INT NOT NULL,
@@ -68,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `order_items` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- 6. Contact Messages Table
-CREATE TABLE IF NOT EXISTS `contact_messages` (
+CREATE TABLE `contact_messages` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR(120) NOT NULL,
     `email` VARCHAR(150) NOT NULL,
@@ -81,37 +82,37 @@ CREATE TABLE IF NOT EXISTS `contact_messages` (
 -- SEED DATA
 -- ==========================================================
 
--- Insert Default Admin (password: admin123) and Customer (password: user123)
+-- Insert Admin (email: hayzcre@gmail.com / pass: hayz2027.az) and Customer
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `phone`, `address`, `city`, `role`, `created_at`) VALUES
-(1, 'Admin MarocShop', 'admin@marocshop.ma', '$2y$12$skKQgNKAQccnLINt1gkm5eWlyCYz3bh/QHomVZSKINpFS5Ru07TCa', '+212 600-000001', 'Boulevard d\'Anfa 123', 'Casablanca', 'admin', NOW()),
+(1, 'Hayz Admin', 'hayzcre@gmail.com', '$2y$12$FFax8p3wNjTZ7GHVpW5CBuNLkk06w6UIr1C1GLm31ZAx//OVOoSbK', '+212 688-212229', 'Boulevard d\'Anfa 123', 'Casablanca', 'admin', NOW()),
 (2, 'Karim Bennani', 'karim@example.com', '$2y$12$3pTqDRJhXxCGdknwiFIsueMv6JXOky6HSFc5ABywS16lKJ9WD4TRi', '+212 611-223344', 'Avenue Mohammed V 45', 'Rabat', 'customer', NOW());
 
--- Insert Categories
+-- Insert Categories with high resolution images
 INSERT INTO `categories` (`id`, `name`, `description`, `image`, `created_at`) VALUES
-(1, 'Pure Argan & Natural Cosmetics', 'Authentic Moroccan cosmetic & culinary argan oils, prickly pear serum, and organic botanical care.', 'cat_argan.svg', NOW()),
-(2, 'Artisanal Moroccan Rugs', 'Handwoven Beni Ourain, Berber, and Kilim wool rugs handcrafted in the Atlas Mountains.', 'cat_rugs.svg', NOW()),
-(3, 'Handcrafted Ceramics & Tagines', 'Traditional handmade Fez & Safi glazed ceramics, serving platters, and authentic cooking tagines.', 'cat_ceramics.svg', NOW()),
-(4, 'Moroccan Leather Goods', 'Premium full-grain leather bags, handcrafted babouches slippers, and artisanal leather poufs.', 'cat_leather.svg', NOW()),
-(5, 'Traditional Caftans & Fashion', 'Modern luxury caftans, embroidered gandoras, djellabas, and bespoke Moroccan apparel.', 'cat_fashion.svg', NOW()),
-(6, 'Spices & Royal Teas', 'Grade-1 Taliouine Saffron, Ras El Hanout, pure dried Damask rosebuds, and organic mint tea.', 'cat_spices.svg', NOW());
+(1, 'Pure Argan & Natural Cosmetics', 'Authentic Moroccan cosmetic & culinary argan oils, prickly pear serum, and organic botanical care.', 'https://images.unsplash.com/photo-1608248597263-00079e96c46a?auto=format&fit=crop&w=600&q=80', NOW()),
+(2, 'Artisanal Moroccan Rugs', 'Handwoven Beni Ourain, Berber, and Kilim wool rugs handcrafted in the Atlas Mountains.', 'https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&w=600&q=80', NOW()),
+(3, 'Handcrafted Ceramics & Tagines', 'Traditional handmade Fez & Safi glazed ceramics, serving platters, and authentic cooking tagines.', 'https://images.unsplash.com/photo-1541518763669-27fef04b14ea?auto=format&fit=crop&w=600&q=80', NOW()),
+(4, 'Moroccan Leather Goods', 'Premium full-grain leather bags, handcrafted babouches slippers, and artisanal leather poufs.', 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80', NOW()),
+(5, 'Traditional Caftans & Fashion', 'Modern luxury caftans, embroidered gandoras, djellabas, and bespoke Moroccan apparel.', 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=600&q=80', NOW()),
+(6, 'Spices & Royal Teas', 'Grade-1 Taliouine Saffron, Ras El Hanout, pure dried Damask rosebuds, and organic mint tea.', 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80', NOW());
 
--- Insert Products
+-- Insert Products with high quality web images
 INSERT INTO `products` (`id`, `category_id`, `name`, `description`, `price`, `old_price`, `stock`, `image`, `created_at`) VALUES
-(1, 1, 'Organic Moroccan Argan Oil (100ml)', '100% Pure cold-pressed virgin cosmetic argan oil sourced directly from women cooperatives in Taroudant. Rich in vitamin E and essential fatty acids for glowing skin and silky hair.', 180.00, 240.00, 45, 'prod_argan_oil.svg', NOW()),
-(2, 1, 'Prickly Pear Seed Oil Elixir (30ml)', 'Pure organic miracle cactus seed oil from Ait Baamrane. The ultimate youth elixir renowned for high antioxidant content and natural anti-aging properties.', 350.00, 420.00, 28, 'prod_prickly_pear.svg', NOW()),
-(3, 1, 'Authentic Moroccan Black Soap with Eucalyptus', 'Traditional Hammam Beldi black soap infused with pure eucalyptus essential oil for deep cleansing and gentle skin exfoliation.', 65.00, 85.00, 90, 'prod_black_soap.svg', NOW()),
-(4, 2, 'Authentic Beni Ourain Geometric Wool Rug', 'Handknotted 100% natural virgin sheep wool rug featuring timeless Berber diamond patterns. Handcrafted by master weavers in the Middle Atlas.', 2400.00, 2900.00, 6, 'prod_rug_beniourain.svg', NOW()),
-(5, 2, 'Vintage Atlas Kilim Handwoven Runner', 'Vibrant vegetable-dyed wool runner rug with intricate tribal geometric symbols. Durable, colorful, and perfect for hallways or living rooms.', 1150.00, 1400.00, 12, 'prod_rug_kilim.svg', NOW()),
-(6, 3, 'Handmade Fez Blue Glazed Tagine (Large)', 'Authentic Moroccan lead-free clay tagine handcrafted and hand-painted in Fez. Designed for slow-simmering aromatic stews and oven-to-table dining.', 290.00, 360.00, 24, 'prod_tagine_fez.svg', NOW()),
-(7, 3, 'Ceramic Mosaic Serving Platter (35cm)', 'Artisanal decorative ceramic plate painted with classic Andalusian-Moroccan floral arabesques and geometric Zellige motifs.', 195.00, 250.00, 35, 'prod_ceramic_plate.svg', NOW()),
-(8, 4, 'Genuine Moroccan Leather Ottoman Pouf', 'Hand-stitched genuine goat leather pouf from the ancient tanneries of Marrakech. Features traditional embossed mandala detailing.', 380.00, 480.00, 20, 'prod_leather_pouf.svg', NOW()),
-(9, 4, 'Handmade Royal Babouche Slippers', 'Ultra-comfortable soft calfskin leather slippers with reinforced soles and delicate gold silk thread embroidery.', 220.00, 280.00, 50, 'prod_babouche.svg', NOW()),
-(10, 4, 'Vintage Tan Leather Travel Duffle Bag', 'Supple full-grain Marrakech leather weekend duffle bag with brass hardware and reinforced straps.', 890.00, 1100.00, 15, 'prod_leather_bag.svg', NOW()),
-(11, 5, 'Luxury Silk Velvet Royal Caftan', 'Masterfully tailored Moroccan caftan in emerald silk velvet with authentic golden Sfifa braidings and Swarovski crystal accents.', 1850.00, 2300.00, 8, 'prod_caftan_royal.svg', NOW()),
-(12, 5, 'Handmade Linen Djellaba for Men', 'Elegant breathable pure linen summer djellaba with fine handcrafted Randa embroidery along collar and cuffs.', 650.00, 780.00, 30, 'prod_djellaba.svg', NOW()),
-(13, 6, 'Pure Taliouine Organic Saffron (5g)', 'Aromatic red gold saffron stigmas harvested from the volcanic soils of Taliouine. Certified Grade 1 with intense aroma and color.', 160.00, 200.00, 60, 'prod_saffron.svg', NOW()),
-(14, 6, 'Royal Moroccan Tea Set & Teapot', 'Traditional engraved brass Moroccan teapot with ornate legs, matching serving tray, and set of 6 gold-rimmed tea glasses.', 460.00, 550.00, 18, 'prod_tea_set.svg', NOW()),
-(15, 6, 'Gourmet Ras El Hanout Spice Blend (150g)', 'Artisanal blend of 27 premium aromatic whole spices stone-ground in Marrakech for authentic Moroccan culinary excellence.', 85.00, 110.00, 85, 'prod_ras_el_hanout.svg', NOW());
+(1, 1, 'Organic Moroccan Argan Oil (100ml)', '100% Pure cold-pressed virgin cosmetic argan oil sourced directly from women cooperatives in Taroudant. Rich in vitamin E and essential fatty acids for glowing skin and silky hair.', 180.00, 240.00, 45, 'https://images.unsplash.com/photo-1608248597263-00079e96c46a?auto=format&fit=crop&w=800&q=80', NOW()),
+(2, 1, 'Prickly Pear Seed Oil Elixir (30ml)', 'Pure organic miracle cactus seed oil from Ait Baamrane. The ultimate youth elixir renowned for high antioxidant content and natural anti-aging properties.', 350.00, 420.00, 28, 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=800&q=80', NOW()),
+(3, 1, 'Authentic Moroccan Black Soap with Eucalyptus', 'Traditional Hammam Beldi black soap infused with pure eucalyptus essential oil for deep cleansing and gentle skin exfoliation.', 65.00, 85.00, 90, 'https://images.unsplash.com/photo-1607006482172-3ba9899127b3?auto=format&fit=crop&w=800&q=80', NOW()),
+(4, 2, 'Authentic Beni Ourain Geometric Wool Rug', 'Handknotted 100% natural virgin sheep wool rug featuring timeless Berber diamond patterns. Handcrafted by master weavers in the Middle Atlas.', 2400.00, 2900.00, 6, 'https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&w=800&q=80', NOW()),
+(5, 2, 'Vintage Atlas Kilim Handwoven Runner', 'Vibrant vegetable-dyed wool runner rug with intricate tribal geometric symbols. Durable, colorful, and perfect for hallways or living rooms.', 1150.00, 1400.00, 12, 'https://images.unsplash.com/photo-1579656592043-a20e25a4aa4b?auto=format&fit=crop&w=800&q=80', NOW()),
+(6, 3, 'Handmade Fez Blue Glazed Tagine (Large)', 'Authentic Moroccan lead-free clay tagine handcrafted and hand-painted in Fez. Designed for slow-simmering aromatic stews and oven-to-table dining.', 290.00, 360.00, 24, 'https://images.unsplash.com/photo-1541518763669-27fef04b14ea?auto=format&fit=crop&w=800&q=80', NOW()),
+(7, 3, 'Ceramic Mosaic Serving Platter (35cm)', 'Artisanal decorative ceramic plate painted with classic Andalusian-Moroccan floral arabesques and geometric Zellige motifs.', 195.00, 250.00, 35, 'https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=800&q=80', NOW()),
+(8, 4, 'Genuine Moroccan Leather Ottoman Pouf', 'Hand-stitched genuine goat leather pouf from the ancient tanneries of Marrakech. Features traditional embossed mandala detailing.', 380.00, 480.00, 20, 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80', NOW()),
+(9, 4, 'Handmade Royal Babouche Slippers', 'Ultra-comfortable soft calfskin leather slippers with reinforced soles and delicate gold silk thread embroidery.', 220.00, 280.00, 50, 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=800&q=80', NOW()),
+(10, 4, 'Vintage Tan Leather Travel Duffle Bag', 'Supple full-grain Marrakech leather weekend duffle bag with brass hardware and reinforced straps.', 890.00, 1100.00, 15, 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80', NOW()),
+(11, 5, 'Luxury Silk Velvet Royal Caftan', 'Masterfully tailored Moroccan caftan in emerald silk velvet with authentic golden Sfifa braidings and Swarovski crystal accents.', 1850.00, 2300.00, 8, 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=800&q=80', NOW()),
+(12, 5, 'Handmade Linen Djellaba for Men', 'Elegant breathable pure linen summer djellaba with fine handcrafted Randa embroidery along collar and cuffs.', 650.00, 780.00, 30, 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80', NOW()),
+(13, 6, 'Pure Taliouine Organic Saffron (5g)', 'Aromatic red gold saffron stigmas harvested from the volcanic soils of Taliouine. Certified Grade 1 with intense aroma and color.', 160.00, 200.00, 60, 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=800&q=80', NOW()),
+(14, 6, 'Royal Moroccan Tea Set & Teapot', 'Traditional engraved brass Moroccan teapot with ornate legs, matching serving tray, and set of 6 gold-rimmed tea glasses.', 460.00, 550.00, 18, 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=800&q=80', NOW()),
+(15, 6, 'Gourmet Ras El Hanout Spice Blend (150g)', 'Artisanal blend of 27 premium aromatic whole spices stone-ground in Marrakech for authentic Moroccan culinary excellence.', 85.00, 110.00, 85, 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=800&q=80', NOW());
 
 -- Insert Sample Orders
 INSERT INTO `orders` (`id`, `user_id`, `total`, `status`, `customer_name`, `phone`, `address`, `city`, `created_at`) VALUES
@@ -128,5 +129,5 @@ INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `quantity`, `price`) 
 
 -- Insert Sample Contact Messages
 INSERT INTO `contact_messages` (`id`, `name`, `email`, `subject`, `message`, `created_at`) VALUES
-(1, 'Salma Idrissi', 'salma.idrissi@gmail.com', 'Custom Rug Dimensions', 'Hello MarocShop team, I would like to inquire whether it is possible to order a custom size Beni Ourain rug (3m x 4m) with custom geometric motifs. Thank you!', DATE_SUB(NOW(), INTERVAL 1 DAY)),
+(1, 'Salma Idrissi', 'salma.idrissi@gmail.com', 'Custom Rug Dimensions', 'Hello Hayz team, I would like to inquire whether it is possible to order a custom size Beni Ourain rug (3m x 4m) with custom geometric motifs. Thank you!', DATE_SUB(NOW(), INTERVAL 1 DAY)),
 (2, 'Yassine Mansouri', 'yassine.m@yahoo.fr', 'Wholesale Cosmetic Argan', 'Bonjour, do you offer wholesale bulk prices for 100% pure certified cosmetic argan oil and prickly pear oil for our boutique in Casablanca?', DATE_SUB(NOW(), INTERVAL 3 DAY));

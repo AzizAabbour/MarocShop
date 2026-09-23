@@ -67,7 +67,8 @@ require_once __DIR__ . '/includes/navbar.php';
             <div class="text-center" style="margin-bottom: 25px;">
                 <span class="badge badge-gold" style="margin-bottom:8px;">Welcome Back</span>
                 <h1 style="font-size: 1.9rem; margin-bottom: 6px;">Account Login</h1>
-                <p class="text-muted" style="font-size:0.9rem;">Sign in to access your orders, profile, and wishlists.</p>
+                <p class="text-muted" style="font-size:0.9rem;">Sign in to access your orders, profile, and wishlists.
+                </p>
             </div>
 
             <?php if (!empty($errors)): ?>
@@ -85,12 +86,14 @@ require_once __DIR__ . '/includes/navbar.php';
 
                 <div class="form-group">
                     <label class="form-label" for="email">Email Address</label>
-                    <input type="email" name="email" id="email" class="form-control" value="<?= e($email) ?>" placeholder="e.g. karim@example.com" required autofocus>
+                    <input type="email" name="email" id="email" class="form-control" value="<?= e($email) ?>"
+                        placeholder="e.g. karim@example.com" required autofocus>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label" for="password">Password</label>
-                    <input type="password" name="password" id="password" class="form-control" placeholder="••••••••" required>
+                    <input type="password" name="password" id="password" class="form-control" placeholder="••••••••"
+                        required>
                 </div>
 
                 <div style="margin-top:25px;">
@@ -98,14 +101,10 @@ require_once __DIR__ . '/includes/navbar.php';
                 </div>
             </form>
 
-            <div style="margin-top: 25px; padding-top:20px; border-top:1px solid var(--border-color); text-align:center; font-size:0.92rem;">
-                Don't have an account yet? <a href="<?= url('register.php') ?>" style="color:var(--color-gold); font-weight:700;">Create an Account</a>
-            </div>
-
-            <div style="margin-top: 15px; background:var(--bg-light-gray); padding:12px; border-radius:var(--border-radius-sm); font-size:0.8rem; color:var(--color-text-muted);">
-                <strong>Demo Accounts:</strong><br>
-                • Admin: <code>admin@marocshop.ma</code> / <code>admin123</code><br>
-                • Customer: <code>karim@example.com</code> / <code>user123</code>
+            <div
+                style="margin-top: 25px; padding-top:20px; border-top:1px solid var(--border-color); text-align:center; font-size:0.92rem;">
+                Don't have an account yet? <a href="<?= url('register.php') ?>"
+                    style="color:var(--color-gold); font-weight:700;">Create an Account</a>
             </div>
         </div>
     </div>

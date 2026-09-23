@@ -1,9 +1,10 @@
 <?php
 /**
- * MarocShop - Admin Product Management
+ * MarocShop - Admin Product Management with Radix UI Icons
  */
 require_once __DIR__ . '/../../config/database.php';
 require_once __DIR__ . '/../../includes/auth.php';
+require_once __DIR__ . '/../../includes/icons.php';
 
 $adminPageTitle = "Product Catalog Management";
 require_once __DIR__ . '/includes/admin_header.php';
@@ -50,7 +51,9 @@ $products = $stmt->fetchAll();
                     <option value="<?= $cat['id'] ?>" <?= ($categoryId == $cat['id']) ? 'selected' : '' ?>><?= e($cat['name']) ?></option>
                 <?php endforeach; ?>
             </select>
-            <button type="submit" class="btn btn-outline btn-sm">Filter</button>
+            <button type="submit" class="btn btn-outline btn-sm">
+                <?= radix_icon('magnifying-glass', '', 14) ?> Filter
+            </button>
             <?php if (!empty($search) || $categoryId > 0): ?>
                 <a href="<?= url('admin/products.php') ?>" class="btn btn-outline btn-sm">Reset</a>
             <?php endif; ?>
@@ -58,7 +61,7 @@ $products = $stmt->fetchAll();
     </div>
 
     <a href="<?= url('admin/add-product.php') ?>" class="btn btn-gold">
-        ➕ Add New Product
+        <?= radix_icon('plus', '', 15) ?> Add New Product
     </a>
 </div>
 
@@ -93,7 +96,7 @@ $products = $stmt->fetchAll();
                                 <img src="<?= get_image_url($p['image']) ?>" alt="<?= e($p['name']) ?>" class="table-img">
                             </td>
                             <td>
-                                <strong style="font-size:0.95rem;"><?= e($p['name']) ?></strong>
+                                <strong style="font-size:0.92rem;"><?= e($p['name']) ?></strong>
                             </td>
                             <td>
                                 <span class="badge badge-gold"><?= e($p['category_name']) ?></span>
@@ -115,13 +118,19 @@ $products = $stmt->fetchAll();
                             </td>
                             <td style="text-align:right;">
                                 <div class="action-buttons" style="justify-content:flex-end;">
-                                    <a href="<?= url('product.php?id=' . $p['id']) ?>" target="_blank" class="btn-icon" title="View in Store">👁️</a>
-                                    <a href="<?= url('admin/edit-product.php?id=' . $p['id']) ?>" class="btn-icon" title="Edit Product">✏️</a>
+                                    <a href="<?= url('product.php?id=' . $p['id']) ?>" target="_blank" class="btn-icon" title="View in Store">
+                                        <?= radix_icon('eye-open', '', 14) ?>
+                                    </a>
+                                    <a href="<?= url('admin/edit-product.php?id=' . $p['id']) ?>" class="btn-icon" title="Edit Product">
+                                        <?= radix_icon('pencil', '', 14) ?>
+                                    </a>
                                     
                                     <form action="<?= url('admin/delete-product.php') ?>" method="POST" class="confirm-delete-form" data-item="<?= e($p['name']) ?>" style="display:inline;">
                                         <?= csrf_field() ?>
                                         <input type="hidden" name="id" value="<?= $p['id'] ?>">
-                                        <button type="submit" class="btn-icon delete" title="Delete Product">🗑️</button>
+                                        <button type="submit" class="btn-icon delete" title="Delete Product">
+                                            <?= radix_icon('trash', '', 14) ?>
+                                        </button>
                                     </form>
                                 </div>
                             </td>

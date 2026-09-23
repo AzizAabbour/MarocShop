@@ -1,11 +1,12 @@
 <?php
 /**
- * MarocShop - Homepage
+ * Hayz - Homepage with Radix UI Icons & Sleek Aesthetics
  */
 require_once __DIR__ . '/config/database.php';
 require_once __DIR__ . '/includes/auth.php';
+require_once __DIR__ . '/includes/icons.php';
 
-$pageTitle = "MarocShop | Authentic Moroccan Craftsmanship & Organic Luxury";
+$pageTitle = "Hayz | Authentic Moroccan Craftsmanship & Organic Luxury";
 $pageDescription = "Explore the finest Moroccan treasures: certified Argan oil, Beni Ourain wool rugs, Fez ceramics, handcrafted babouche slippers, and bespoke caftans.";
 
 $db = get_db();
@@ -56,7 +57,7 @@ require_once __DIR__ . '/includes/navbar.php';
         <div class="container hero-grid">
             <div class="hero-text-content">
                 <div class="hero-tag">
-                    <span>✨</span> Authentic Moroccan Heritage
+                    <?= radix_icon('sparkles', '', 14) ?> Authentic Moroccan Heritage
                 </div>
                 <h1 class="hero-title">
                     Timeless Moroccan Elegance, <br>
@@ -67,7 +68,7 @@ require_once __DIR__ . '/includes/navbar.php';
                 </p>
                 <div class="hero-actions">
                     <a href="<?= url('shop.php') ?>" class="btn btn-gold btn-lg">
-                        Shop Collection <span>→</span>
+                        Shop Collection <?= radix_icon('chevron-right', '', 16) ?>
                     </a>
                     <a href="<?= url('shop.php?category_id=1') ?>" class="btn btn-outline-gold btn-lg">
                         Explore Argan Beauty
@@ -79,7 +80,9 @@ require_once __DIR__ . '/includes/navbar.php';
                 <div class="hero-image-card">
                     <img src="<?= asset('images/hero_banner.svg') ?>" alt="Authentic Moroccan Treasures">
                     <div class="hero-badge-float">
-                        <div class="icon">🏷️</div>
+                        <div class="icon">
+                            <?= radix_icon('shield-check', '', 20) ?>
+                        </div>
                         <div>
                             <div class="title">100% Genuine Certified</div>
                             <div class="sub">Direct from Moroccan Cooperatives</div>
@@ -94,28 +97,36 @@ require_once __DIR__ . '/includes/navbar.php';
     <section class="features-strip">
         <div class="container features-grid">
             <div class="feature-item">
-                <div class="feature-icon">🚚</div>
+                <div class="feature-icon">
+                    <?= radix_icon('truck', '', 22) ?>
+                </div>
                 <div>
                     <div class="feature-title">Express Delivery</div>
                     <div class="feature-desc">Fast delivery in 24-48h across all Moroccan cities.</div>
                 </div>
             </div>
             <div class="feature-item">
-                <div class="feature-icon">💵</div>
+                <div class="feature-icon">
+                    <?= radix_icon('wallet', '', 22) ?>
+                </div>
                 <div>
                     <div class="feature-title">Cash on Delivery</div>
                     <div class="feature-desc">Pay with cash safely upon inspecting your package.</div>
                 </div>
             </div>
             <div class="feature-item">
-                <div class="feature-icon">🌿</div>
+                <div class="feature-icon">
+                    <?= radix_icon('sparkles', '', 22) ?>
+                </div>
                 <div>
                     <div class="feature-title">100% Organic & Pure</div>
                     <div class="feature-desc">Certified virgin oils & authentic natural ingredients.</div>
                 </div>
             </div>
             <div class="feature-item">
-                <div class="feature-icon">⭐</div>
+                <div class="feature-icon">
+                    <?= radix_icon('shield-check', '', 22) ?>
+                </div>
                 <div>
                     <div class="feature-title">Master Craftsmanship</div>
                     <div class="feature-desc">Handmade by verified master artisans across Morocco.</div>
@@ -128,7 +139,7 @@ require_once __DIR__ . '/includes/navbar.php';
     <section class="section-spacing">
         <div class="container">
             <div class="section-header text-center">
-                <span class="section-subtitle">Discover Our Specialties</span>
+                <span class="section-subtitle"><?= radix_icon('layers', '', 14) ?> Discover Our Specialties</span>
                 <h2 class="section-title">Popular Categories</h2>
                 <div class="section-divider"></div>
             </div>
@@ -137,7 +148,7 @@ require_once __DIR__ . '/includes/navbar.php';
                 <?php foreach ($categories as $cat): ?>
                     <a href="<?= url('shop.php?category_id=' . $cat['id']) ?>" class="category-card">
                         <div class="category-icon-wrapper">
-                            <img src="<?= get_image_url($cat['image'], 'category') ?>" alt="<?= e($cat['name']) ?>" style="width:48px; height:48px;">
+                            <img src="<?= get_image_url($cat['image'], 'category') ?>" alt="<?= e($cat['name']) ?>" style="width:44px; height:44px;">
                         </div>
                         <h3 class="category-name"><?= e($cat['name']) ?></h3>
                         <span class="category-count"><?= $cat['product_count'] ?> Products</span>
@@ -152,11 +163,13 @@ require_once __DIR__ . '/includes/navbar.php';
         <div class="container">
             <div class="section-header flex-between" style="flex-wrap:wrap; gap:15px;">
                 <div>
-                    <span class="section-subtitle">Handpicked Luxury</span>
+                    <span class="section-subtitle"><?= radix_icon('sparkles', '', 14) ?> Handpicked Luxury</span>
                     <h2 class="section-title">Featured Creations</h2>
                     <div class="section-divider left"></div>
                 </div>
-                <a href="<?= url('shop.php') ?>" class="btn btn-outline btn-sm">View All Products &rarr;</a>
+                <a href="<?= url('shop.php') ?>" class="btn btn-outline btn-sm">
+                    View All Products <?= radix_icon('chevron-right', '', 14) ?>
+                </a>
             </div>
 
             <div class="products-grid">
@@ -173,15 +186,19 @@ require_once __DIR__ . '/includes/navbar.php';
             <div class="promo-banner">
                 <div class="promo-grid">
                     <div>
-                        <span class="badge badge-gold" style="margin-bottom: 15px;">Seasonal Privilege</span>
+                        <span class="badge badge-gold" style="margin-bottom: 15px;">
+                            <?= radix_icon('sparkles', '', 13) ?> Seasonal Privilege
+                        </span>
                         <h2 class="promo-title">Save Up to <span>30% Off</span> on Pure Argan & Prickly Pear Elixirs</h2>
-                        <p style="color:#CCCCCC; margin-bottom: 25px; font-size:1.05rem; line-height:1.7;">
+                        <p style="color:#B5BAC3; margin-bottom: 25px; font-size:1.02rem; line-height:1.7;">
                             Harvested fresh from Taroudant and Ait Baamrane. Unlock the world's most sought-after organic beauty rituals. Limited seasonal batches available.
                         </p>
-                        <a href="<?= url('shop.php?category_id=1') ?>" class="btn btn-gold btn-lg">Explore Beauty Offers</a>
+                        <a href="<?= url('shop.php?category_id=1') ?>" class="btn btn-gold btn-lg">
+                            Explore Beauty Offers <?= radix_icon('chevron-right', '', 16) ?>
+                        </a>
                     </div>
                     <div class="text-center">
-                        <img src="<?= asset('images/prod_prickly_pear.svg') ?>" alt="Argan & Prickly Pear Promo" style="max-height: 280px; margin: 0 auto; border-radius: 12px; border: 2px solid var(--color-gold);">
+                        <img src="<?= asset('images/prod_prickly_pear.svg') ?>" alt="Argan & Prickly Pear Promo" style="max-height: 270px; margin: 0 auto; border-radius: 12px; border: 1.5px solid var(--color-gold);">
                     </div>
                 </div>
             </div>
@@ -192,7 +209,7 @@ require_once __DIR__ . '/includes/navbar.php';
     <section class="section-spacing">
         <div class="container">
             <div class="section-header text-center">
-                <span class="section-subtitle">Fresh From The Ateliers</span>
+                <span class="section-subtitle"><?= radix_icon('sparkles', '', 14) ?> Fresh From The Ateliers</span>
                 <h2 class="section-title">New Arrivals</h2>
                 <div class="section-divider"></div>
             </div>
@@ -209,7 +226,7 @@ require_once __DIR__ . '/includes/navbar.php';
     <section class="section-spacing" style="background-color: #FFFFFF;">
         <div class="container">
             <div class="section-header text-center">
-                <span class="section-subtitle">Customer Favorites</span>
+                <span class="section-subtitle"><?= radix_icon('star-filled', '', 14) ?> Customer Favorites</span>
                 <h2 class="section-title">Best Sellers</h2>
                 <div class="section-divider"></div>
             </div>
@@ -226,19 +243,21 @@ require_once __DIR__ . '/includes/navbar.php';
     <section class="section-spacing" style="background-color: var(--bg-light-gray);">
         <div class="container">
             <div class="section-header text-center">
-                <span class="section-subtitle">Real Experiences</span>
+                <span class="section-subtitle"><?= radix_icon('check-circled', '', 14) ?> Real Experiences</span>
                 <h2 class="section-title">What Our Customers Say</h2>
                 <div class="section-divider"></div>
             </div>
 
             <div class="testimonials-grid">
                 <div class="testimonial-card">
-                    <div class="testimonial-stars">★★★★★</div>
+                    <div class="testimonial-stars">
+                        <?php for($i=0; $i<5; $i++) echo radix_icon('star-filled', 'text-gold', 16); ?>
+                    </div>
                     <p class="testimonial-text">
                         "The Beni Ourain rug I ordered arrived in Casablanca in just 24 hours. The wool quality is sublime and the geometric Berber pattern gives our living room an authentic palace feel."
                     </p>
                     <div class="testimonial-author">
-                        <div class="author-avatar">L.B</div>
+                        <div class="author-avatar">LB</div>
                         <div>
                             <div class="author-name">Laila Benjelloun</div>
                             <div class="author-city">Casablanca, Morocco</div>
@@ -247,12 +266,14 @@ require_once __DIR__ . '/includes/navbar.php';
                 </div>
 
                 <div class="testimonial-card">
-                    <div class="testimonial-stars">★★★★★</div>
+                    <div class="testimonial-stars">
+                        <?php for($i=0; $i<5; $i++) echo radix_icon('star-filled', 'text-gold', 16); ?>
+                    </div>
                     <p class="testimonial-text">
                         "I've been searching for 100% pure organic prickly pear seed oil and this is by far the highest purity on the market. Non-greasy and my skin feels deeply nourished."
                     </p>
                     <div class="testimonial-author">
-                        <div class="author-avatar">S.M</div>
+                        <div class="author-avatar">SM</div>
                         <div>
                             <div class="author-name">Soukaina Mansouri</div>
                             <div class="author-city">Rabat, Morocco</div>
@@ -261,12 +282,14 @@ require_once __DIR__ . '/includes/navbar.php';
                 </div>
 
                 <div class="testimonial-card">
-                    <div class="testimonial-stars">★★★★★</div>
+                    <div class="testimonial-stars">
+                        <?php for($i=0; $i<5; $i++) echo radix_icon('star-filled', 'text-gold', 16); ?>
+                    </div>
                     <p class="testimonial-text">
                         "Super convenient Cash on Delivery service. The leather duffle bag and Fez glazed tagine were securely packaged with care. Outstanding Moroccan craftsmanship!"
                     </p>
                     <div class="testimonial-author">
-                        <div class="author-avatar">M.K</div>
+                        <div class="author-avatar">MK</div>
                         <div>
                             <div class="author-name">Mehdi Kabbaj</div>
                             <div class="author-city">Marrakech, Morocco</div>
@@ -281,14 +304,18 @@ require_once __DIR__ . '/includes/navbar.php';
     <section class="newsletter-section">
         <div class="container">
             <div class="newsletter-box">
-                <span class="badge badge-gold" style="margin-bottom: 12px;">VIP Club</span>
-                <h2 style="color:#FFFFFF; font-size:2.2rem; margin-bottom: 12px;">Join the MarocShop Insider</h2>
-                <p style="color:#CCCCCC; font-size: 1.05rem;">
+                <span class="badge badge-gold" style="margin-bottom: 12px;">
+                    <?= radix_icon('sparkles', '', 13) ?> VIP Club
+                </span>
+                <h2 style="color:#FFFFFF; font-size:2.15rem; margin-bottom: 12px;">Join the MarocShop Insider</h2>
+                <p style="color:#9DA3AE; font-size: 1rem;">
                     Receive private invitations to artisan exhibitions, seasonal discounts, and secret collection launches.
                 </p>
                 <form action="<?= url('contact.php') ?>" method="GET" class="newsletter-form">
                     <input type="email" name="email" class="newsletter-input" placeholder="Enter your email address..." required>
-                    <button type="submit" class="btn btn-gold">Subscribe</button>
+                    <button type="submit" class="btn btn-gold">
+                        Subscribe <?= radix_icon('chevron-right', '', 15) ?>
+                    </button>
                 </form>
             </div>
         </div>

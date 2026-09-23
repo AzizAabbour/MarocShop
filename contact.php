@@ -1,9 +1,10 @@
 <?php
 /**
- * MarocShop - Contact Us & Customer Support
+ * Hayz - Contact Us & Customer Support
  */
 require_once __DIR__ . '/config/database.php';
 require_once __DIR__ . '/includes/auth.php';
+require_once __DIR__ . '/includes/icons.php';
 
 $errors = [];
 $success = false;
@@ -68,7 +69,7 @@ require_once __DIR__ . '/includes/navbar.php';
         <!-- Header -->
         <div class="text-center" style="margin-bottom: 45px;">
             <span class="section-subtitle">We Are Here To Assist You</span>
-            <h1 class="section-title">Get in Touch with MarocShop</h1>
+            <h1 class="section-title">Get in Touch with Hayz</h1>
             <div class="section-divider"></div>
         </div>
 
@@ -112,7 +113,9 @@ require_once __DIR__ . '/includes/navbar.php';
                         <textarea name="message" id="message" class="form-control" rows="5" placeholder="How can our Moroccan artisan specialists assist you today?" required><?= e($message) ?></textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-gold btn-lg">Send Message &rarr;</button>
+                    <button type="submit" class="btn btn-gold btn-lg">
+                        <?= radix_icon('envelope-closed', '', 16) ?> Send Message
+                    </button>
                 </form>
             </div>
 
@@ -120,31 +123,37 @@ require_once __DIR__ . '/includes/navbar.php';
             <div style="display:flex; flex-direction:column; gap:20px;">
                 <!-- Main Atelier Casablanca -->
                 <div style="background:var(--bg-card); padding:26px; border-radius:var(--border-radius-md); border:1px solid var(--border-color); border-left:4px solid var(--color-gold);">
-                    <h3 style="font-size:1.15rem; margin-bottom:10px; color:var(--bg-dark);">🏛️ Casablanca Boutique & Showroom</h3>
+                    <h3 style="font-size:1.15rem; margin-bottom:10px; color:var(--bg-dark); display:flex; align-items:center; gap:8px;">
+                        <span style="color:var(--color-gold);"><?= radix_icon('pin', '', 18) ?></span> Casablanca Boutique & Showroom
+                    </h3>
                     <div style="font-size:0.92rem; color:var(--color-text-muted); line-height:1.7;">
                         123 Boulevard d'Anfa, 3rd Floor<br>
                         Casablanca 20000, Morocco<br>
-                        📞 <strong>+212 522-001122</strong>
+                        <span style="display:inline-flex; align-items:center; gap:4px; margin-top:4px;"><?= radix_icon('phone', '', 14) ?> <strong>+212 688-212229</strong></span>
                     </div>
                 </div>
 
                 <!-- Marrakech Workshop -->
                 <div style="background:var(--bg-card); padding:26px; border-radius:var(--border-radius-md); border:1px solid var(--border-color); border-left:4px solid var(--color-gold);">
-                    <h3 style="font-size:1.15rem; margin-bottom:10px; color:var(--bg-dark);">🏺 Marrakech Artisan Atelier</h3>
+                    <h3 style="font-size:1.15rem; margin-bottom:10px; color:var(--bg-dark); display:flex; align-items:center; gap:8px;">
+                        <span style="color:var(--color-gold);"><?= radix_icon('pin', '', 18) ?></span> Marrakech Artisan Atelier
+                    </h3>
                     <div style="font-size:0.92rem; color:var(--color-text-muted); line-height:1.7;">
                         45 Rue de la Liberté, Quartier Guéliz<br>
                         Marrakech 40000, Morocco<br>
-                        📞 <strong>+212 524-334455</strong>
+                        <span style="display:inline-flex; align-items:center; gap:4px; margin-top:4px;"><?= radix_icon('phone', '', 14) ?> <strong>+212 688-212229</strong></span>
                     </div>
                 </div>
 
                 <!-- Operating Hours & Delivery -->
                 <div style="background:var(--bg-card); padding:26px; border-radius:var(--border-radius-md); border:1px solid var(--border-color);">
-                    <h3 style="font-size:1.15rem; margin-bottom:10px; color:var(--bg-dark);">⏱️ Customer Service Hours</h3>
+                    <h3 style="font-size:1.15rem; margin-bottom:10px; color:var(--bg-dark); display:flex; align-items:center; gap:8px;">
+                        <span style="color:var(--color-gold);"><?= radix_icon('dashboard', '', 18) ?></span> Customer Service Hours
+                    </h3>
                     <div style="font-size:0.92rem; color:var(--color-text-muted); line-height:1.7;">
                         <strong>Monday – Saturday:</strong> 9:00 AM – 8:00 PM (GMT+1)<br>
                         <strong>Sunday:</strong> 10:00 AM – 4:00 PM<br>
-                        ✉️ <strong>support@marocshop.ma</strong>
+                        <span style="display:inline-flex; align-items:center; gap:4px; margin-top:4px;"><?= radix_icon('envelope-closed', '', 14) ?> <strong>hayzcre@gmail.com</strong></span>
                     </div>
                 </div>
             </div>

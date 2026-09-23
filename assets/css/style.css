@@ -425,12 +425,16 @@ h4 { font-size: 1.15rem; }
 .brand-logo {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-family: var(--font-heading);
-  font-size: 1.65rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: var(--bg-dark);
+  gap: 10px;
+  text-decoration: none;
+}
+
+.brand-logo-img {
+  height: 44px;
+  max-height: 44px;
+  width: auto;
+  object-fit: contain;
+  display: block;
 }
 
 .brand-logo .logo-badge {

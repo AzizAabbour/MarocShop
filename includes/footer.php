@@ -1,8 +1,9 @@
 <?php
 /**
- * MarocShop - Footer Component
+ * Hayz - Footer Component
  */
 require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../includes/icons.php';
 ?>
 <!-- Footer Section -->
 <footer class="footer">
@@ -10,16 +11,25 @@ require_once __DIR__ . '/../config/database.php';
         <div class="footer-grid">
             <!-- Brand Info -->
             <div class="footer-column">
-                <a href="<?= url('index.php') ?>" class="brand-logo" style="color:#FFFFFF; margin-bottom:15px;">
-                    <span class="logo-badge">M</span>arocShop
+                <a href="<?= url('index.php') ?>" class="brand-logo" style="margin-bottom:15px; display:inline-block;">
+                    <img src="<?= asset('logo/logo.png') ?>" alt="Hayz" class="brand-logo-img" style="height:40px; width:auto;">
                 </a>
                 <p style="color:#AAAAAA; line-height:1.7; margin-bottom:20px; font-size:0.92rem;">
                     Your premier online destination for authentic Moroccan craftsmanship, pure organic Argan beauty, handknotted Berber rugs, and timeless cultural heritage.
                 </p>
-                <div style="color:#CCCCCC; font-size:0.88rem; display:flex; flex-direction:column; gap:6px;">
-                    <div>📍 Boulevard d'Anfa, Casablanca, Morocco</div>
-                    <div>📞 +212 522-001122 / +212 600-000001</div>
-                    <div>✉️ support@marocshop.ma</div>
+                <div style="color:#CCCCCC; font-size:0.88rem; display:flex; flex-direction:column; gap:8px;">
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <span style="color:var(--color-gold);"><?= radix_icon('pin', '', 15) ?></span>
+                        <span>Boulevard d'Anfa, Casablanca, Morocco</span>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <span style="color:var(--color-gold);"><?= radix_icon('phone', '', 15) ?></span>
+                        <span>+212 688-212229</span>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <span style="color:var(--color-gold);"><?= radix_icon('envelope-closed', '', 15) ?></span>
+                        <span>hayzcre@gmail.com</span>
+                    </div>
                 </div>
             </div>
 
@@ -69,9 +79,9 @@ require_once __DIR__ . '/../config/database.php';
                 &copy; <?= date('Y') ?> <strong><?= STORE_NAME ?></strong>. All rights reserved. Crafted with authentic passion in Morocco.
             </div>
             <div class="payment-methods-badge">
-                <span class="payment-tag">💵 Cash on Delivery (COD)</span>
-                <span class="payment-tag">🛡️ 100% Authentic Artisanal</span>
-                <span class="payment-tag">🚚 Express Morocco Shipping</span>
+                <span class="payment-tag" style="display:inline-flex; align-items:center; gap:6px;"><?= radix_icon('card-stack', 'text-gold', 14) ?> Cash on Delivery (COD)</span>
+                <span class="payment-tag" style="display:inline-flex; align-items:center; gap:6px;"><?= radix_icon('shield-check', 'text-gold', 14) ?> 100% Authentic Artisanal</span>
+                <span class="payment-tag" style="display:inline-flex; align-items:center; gap:6px;"><?= radix_icon('truck', 'text-gold', 14) ?> Express Morocco Shipping</span>
             </div>
         </div>
     </div>

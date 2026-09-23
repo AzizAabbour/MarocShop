@@ -1,9 +1,10 @@
 <?php
 /**
- * MarocShop - Shopping Cart Handler & Page
+ * Hayz - Shopping Cart Handler & Page
  */
 require_once __DIR__ . '/config/database.php';
 require_once __DIR__ . '/includes/auth.php';
+require_once __DIR__ . '/includes/icons.php';
 
 // Handle "Buy Now" shortcut (e.g. cart.php?buy_now=5)
 if (!empty($_GET['buy_now'])) {
@@ -91,7 +92,7 @@ require_once __DIR__ . '/includes/navbar.php';
 
         <?php if (empty($cartItems)): ?>
             <div style="background:var(--bg-card); padding:70px 20px; text-align:center; border-radius:var(--border-radius-lg); border:1px solid var(--border-color); max-width:650px; margin:0 auto;">
-                <div style="font-size:3.5rem; margin-bottom:15px;">🛒</div>
+                <div style="font-size:3.5rem; margin-bottom:15px; color:var(--color-gold); display:flex; justify-content:center;"><?= radix_icon('backpack', '', 60) ?></div>
                 <h2 style="font-size:1.6rem; margin-bottom:10px;">Your Cart is Currently Empty</h2>
                 <p class="text-muted" style="margin-bottom:25px;">You haven't added any authentic Moroccan products yet.</p>
                 <a href="<?= url('shop.php') ?>" class="btn btn-gold btn-lg">Explore Catalog &rarr;</a>
@@ -150,8 +151,8 @@ require_once __DIR__ . '/includes/navbar.php';
                                             <?= csrf_field() ?>
                                             <input type="hidden" name="action" value="remove">
                                             <input type="hidden" name="product_id" value="<?= $prod['id'] ?>">
-                                            <button type="submit" title="Remove Item" style="color:var(--color-danger); font-size:1.1rem; padding:6px; cursor:pointer;" onclick="return confirm('Remove this item from your cart?');">
-                                                🗑️
+                                            <button type="submit" title="Remove Item" style="color:var(--color-danger); padding:6px; background:none; border:none; cursor:pointer;" onclick="return confirm('Remove this item from your cart?');">
+                                                <?= radix_icon('trash', '', 16) ?>
                                             </button>
                                         </form>
                                     </td>
@@ -168,7 +169,7 @@ require_once __DIR__ . '/includes/navbar.php';
                             <?= csrf_field() ?>
                             <input type="hidden" name="action" value="clear">
                             <button type="submit" class="btn btn-outline btn-sm" style="color:var(--color-danger); border-color:var(--color-danger);" onclick="return confirm('Are you sure you want to empty your entire cart?');">
-                                Clear Cart
+                                <?= radix_icon('trash', '', 14) ?> Clear Cart
                             </button>
                         </form>
                     </div>
@@ -195,8 +196,8 @@ require_once __DIR__ . '/includes/navbar.php';
                     </div>
 
                     <?php if ($subtotal < FREE_SHIPPING_THRESHOLD): ?>
-                        <div style="font-size:0.82rem; color:var(--color-gold); background:var(--color-gold-light); padding:8px 12px; border-radius:4px; margin: 10px 0;">
-                            ✨ Add <strong><?= format_price(FREE_SHIPPING_THRESHOLD - $subtotal) ?></strong> more for <strong>Free Express Shipping</strong>!
+                        <div style="font-size:0.82rem; color:var(--color-gold); background:var(--color-gold-light); padding:8px 12px; border-radius:4px; margin: 10px 0; display:flex; align-items:center; gap:6px;">
+                            <?= radix_icon('sparkles', '', 14) ?> Add <strong><?= format_price(FREE_SHIPPING_THRESHOLD - $subtotal) ?></strong> more for <strong>Free Express Shipping</strong>!
                         </div>
                     <?php endif; ?>
 
@@ -212,8 +213,8 @@ require_once __DIR__ . '/includes/navbar.php';
                     </div>
 
                     <div style="margin-top: 20px; font-size:0.82rem; color:var(--color-text-muted); text-align:center; display:flex; flex-direction:column; gap:6px;">
-                        <div>🛡️ Safe & Secure Checkout</div>
-                        <div>💵 Cash on Delivery Available in All Moroccan Cities</div>
+                        <div style="display:flex; align-items:center; justify-content:center; gap:6px;"><?= radix_icon('shield-check', 'text-gold', 14) ?> Safe & Secure Checkout</div>
+                        <div style="display:flex; align-items:center; justify-content:center; gap:6px;"><?= radix_icon('card-stack', 'text-gold', 14) ?> Cash on Delivery Available in All Moroccan Cities</div>
                     </div>
                 </div>
             </div>

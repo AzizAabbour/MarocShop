@@ -1,9 +1,10 @@
 <?php
 /**
- * MarocShop - Navbar & Topbar Component
+ * Hayz - Navbar & Topbar Component with Radix UI Icons
  */
 require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../includes/auth.php';
+require_once __DIR__ . '/../includes/icons.php';
 
 $cartCount = get_cart_count();
 $user = current_user();
@@ -23,15 +24,16 @@ try {
 <div class="top-bar">
     <div class="container">
         <div class="top-bar-notice">
-            <span>🇲🇦</span>
-            <span>Express Delivery across Morocco — <span class="highlight">Cash on Delivery (Paiement à la
-                    livraison)</span></span>
+            <span><?= radix_icon('truck', 'text-gold', 15) ?></span>
+            <span>Express Delivery across Morocco — <span class="highlight">Cash on Delivery (Paiement à la livraison)</span></span>
         </div>
         <div class="top-bar-links">
-            <span>tele: +212614484434</span>
-            <span>email: [EMAIL_ADDRESS]</span>
+            <span>📞 +212 688-212229</span>
+            <span>✉️ hayzcre@gmail.com</span>
             <?php if (is_admin()): ?>
-                <a href="<?= url('admin/index.php') ?>" style="color:var(--color-gold); font-weight:700;">⚙️ Admin Panel</a>
+                <a href="<?= url('admin/index.php') ?>" style="color:var(--color-gold); font-weight:700;">
+                    <?= radix_icon('dashboard', '', 14) ?> Admin Panel
+                </a>
             <?php endif; ?>
         </div>
     </div>
@@ -41,41 +43,28 @@ try {
 <header class="navbar">
     <div class="container navbar-container">
         <!-- Brand Logo -->
-        <a href="<?= url('index.php') ?>" class="brand-logo" aria-label="MarocShop Homepage">
-            <span class="logo-badge">M</span>arocShop
-            <span class="tag">MA</span>
+        <a href="<?= url('index.php') ?>" class="brand-logo" aria-label="Hayz Homepage">
+            <img src="<?= asset('logo/logo.png') ?>" alt="Hayz" class="brand-logo-img">
         </a>
 
         <!-- Desktop Navigation Links -->
         <nav class="nav-menu">
-            <a href="<?= url('index.php') ?>"
-                class="nav-link <?= (basename($_SERVER['PHP_SELF']) == 'index.php') ? 'active' : '' ?>">Home</a>
-            <a href="<?= url('shop.php') ?>"
-                class="nav-link <?= (basename($_SERVER['PHP_SELF']) == 'shop.php' && empty($_GET['category_id'])) ? 'active' : '' ?>">Shop</a>
+            <a href="<?= url('index.php') ?>" class="nav-link <?= (basename($_SERVER['PHP_SELF']) == 'index.php') ? 'active' : '' ?>">Home</a>
+            <a href="<?= url('shop.php') ?>" class="nav-link <?= (basename($_SERVER['PHP_SELF']) == 'shop.php' && empty($_GET['category_id'])) ? 'active' : '' ?>">Shop</a>
             <a href="<?= url('shop.php') ?>" class="nav-link">Categories</a>
-            <a href="<?= url('contact.php') ?>"
-                class="nav-link <?= (basename($_SERVER['PHP_SELF']) == 'contact.php') ? 'active' : '' ?>">Contact</a>
+            <a href="<?= url('contact.php') ?>" class="nav-link <?= (basename($_SERVER['PHP_SELF']) == 'contact.php') ? 'active' : '' ?>">Contact</a>
         </nav>
 
         <!-- Navbar Action Icons -->
         <div class="nav-actions">
             <!-- Search Trigger -->
             <button class="action-btn search-trigger-btn" aria-label="Search Catalog" title="Search products">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
+                <?= radix_icon('magnifying-glass', '', 16) ?>
             </button>
 
             <!-- Cart Icon with Live Counter -->
             <a href="<?= url('cart.php') ?>" class="action-btn cart-btn" aria-label="Shopping Cart" title="View Cart">
-                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="9" cy="21" r="1"></circle>
-                    <circle cx="20" cy="21" r="1"></circle>
-                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                </svg>
+                <?= radix_icon('backpack', '', 16) ?>
                 <span class="cart-count"><?= $cartCount ?></span>
             </a>
 
@@ -83,30 +72,37 @@ try {
             <?php if ($user): ?>
                 <div class="user-dropdown">
                     <div class="user-menu-btn">
-                        <span style="color:var(--color-gold);">👤</span>
+                        <span style="color:var(--color-gold); display:flex; align-items:center;">
+                            <?= radix_icon('person', '', 16) ?>
+                        </span>
                         <span><?= e(explode(' ', $user['name'])[0]) ?></span>
-                        <small>▾</small>
+                        <small style="font-size:0.7rem; margin-left:2px;">▾</small>
                     </div>
                     <div class="user-dropdown-menu">
-                        <div
-                            style="padding: 10px 18px; font-size:0.82rem; color:var(--color-text-muted); border-bottom:1px solid var(--border-color);">
-                            Signed in as<br><strong style="color:var(--bg-dark);"><?= e($user['email']) ?></strong>
+                        <div style="padding: 10px 18px; font-size:0.8rem; color:var(--color-text-muted); border-bottom:1px solid var(--border-color);">
+                            Signed in as<br><strong style="color:var(--bg-dark); font-size:0.85rem;"><?= e($user['email']) ?></strong>
                         </div>
-                        <a href="<?= url('profile.php') ?>">👤 My Profile</a>
-                        <a href="<?= url('orders.php') ?>">📦 My Orders</a>
+                        <a href="<?= url('profile.php') ?>">
+                            <?= radix_icon('person', '', 14) ?> My Profile
+                        </a>
+                        <a href="<?= url('orders.php') ?>">
+                            <?= radix_icon('cube', '', 14) ?> My Orders
+                        </a>
                         <?php if (is_admin()): ?>
-                            <a href="<?= url('admin/index.php') ?>" style="color:var(--color-gold); font-weight:700;">⚙️ Admin
-                                Dashboard</a>
+                            <a href="<?= url('admin/index.php') ?>" style="color:var(--color-gold); font-weight:700;">
+                                <?= radix_icon('dashboard', '', 14) ?> Admin Dashboard
+                            </a>
                         <?php endif; ?>
                         <div class="divider"></div>
-                        <a href="<?= url('logout.php') ?>" style="color:var(--color-danger);">🚪 Logout</a>
+                        <a href="<?= url('logout.php') ?>" style="color:var(--color-danger);">
+                            <?= radix_icon('exit', '', 14) ?> Logout
+                        </a>
                     </div>
                 </div>
             <?php else: ?>
                 <div style="display:flex; align-items:center; gap:8px;">
                     <a href="<?= url('login.php') ?>" class="btn btn-outline btn-sm">Login</a>
-                    <a href="<?= url('register.php') ?>" class="btn btn-primary btn-sm"
-                        style="background:var(--color-gold); color:#111111; border-color:var(--color-gold);">Register</a>
+                    <a href="<?= url('register.php') ?>" class="btn btn-gold btn-sm">Register</a>
                 </div>
             <?php endif; ?>
 
@@ -125,24 +121,42 @@ try {
 <div class="mobile-nav-drawer" id="mobileDrawer">
     <div class="mobile-nav-header">
         <a href="<?= url('index.php') ?>" class="brand-logo" style="font-size:1.4rem;">
-            <span class="logo-badge">M</span>arocShop
+            <img src="<?= asset('logo/logo.png') ?>" alt="Hayz" class="brand-logo-img" style="height:32px;">
         </a>
-        <button class="mobile-close-btn" id="mobileCloseBtn">&times;</button>
+        <button class="mobile-close-btn" id="mobileCloseBtn">
+            <?= radix_icon('cross', '', 14) ?>
+        </button>
     </div>
 
     <div class="mobile-nav-links">
-        <a href="<?= url('index.php') ?>">🏠 Home</a>
-        <a href="<?= url('shop.php') ?>">🛍️ All Products</a>
-        <a href="<?= url('cart.php') ?>">🛒 Shopping Cart (<?= $cartCount ?>)</a>
-        <a href="<?= url('contact.php') ?>">✉️ Contact Us</a>
-
+        <a href="<?= url('index.php') ?>">
+            <?= radix_icon('dashboard', 'text-gold', 16) ?> Home
+        </a>
+        <a href="<?= url('shop.php') ?>">
+            <?= radix_icon('layers', 'text-gold', 16) ?> All Products
+        </a>
+        <a href="<?= url('cart.php') ?>">
+            <?= radix_icon('backpack', 'text-gold', 16) ?> Shopping Cart (<?= $cartCount ?>)
+        </a>
+        <a href="<?= url('contact.php') ?>">
+            <?= radix_icon('envelope-closed', 'text-gold', 16) ?> Contact Us
+        </a>
+        
         <?php if ($user): ?>
-            <a href="<?= url('profile.php') ?>">👤 My Profile</a>
-            <a href="<?= url('orders.php') ?>">📦 My Orders</a>
+            <a href="<?= url('profile.php') ?>">
+                <?= radix_icon('person', 'text-gold', 16) ?> My Profile
+            </a>
+            <a href="<?= url('orders.php') ?>">
+                <?= radix_icon('cube', 'text-gold', 16) ?> My Orders
+            </a>
             <?php if (is_admin()): ?>
-                <a href="<?= url('admin/index.php') ?>" style="color:var(--color-gold); font-weight:bold;">⚙️ Admin Panel</a>
+                <a href="<?= url('admin/index.php') ?>" style="color:var(--color-gold); font-weight:bold;">
+                    <?= radix_icon('dashboard', 'text-gold', 16) ?> Admin Panel
+                </a>
             <?php endif; ?>
-            <a href="<?= url('logout.php') ?>" style="color:var(--color-danger);">🚪 Logout</a>
+            <a href="<?= url('logout.php') ?>" style="color:var(--color-danger);">
+                <?= radix_icon('exit', '', 16) ?> Logout
+            </a>
         <?php else: ?>
             <div style="display:flex; flex-direction:column; gap:10px; margin-top:15px;">
                 <a href="<?= url('login.php') ?>" class="btn btn-outline btn-block">Login</a>
@@ -155,24 +169,26 @@ try {
 <!-- Search Modal -->
 <div class="search-modal" id="searchModal">
     <div class="search-modal-box">
-        <button class="search-close-btn" id="searchCloseBtn">&times;</button>
-        <h3 style="font-size:1.4rem; margin-bottom:8px;">Search MarocShop Catalog</h3>
-        <p class="text-muted" style="font-size:0.9rem;">Find Moroccan argan oils, rugs, tagines, leather babouches,
-            caftans, and spices.</p>
-
+        <button class="search-close-btn" id="searchCloseBtn">
+            <?= radix_icon('cross', '', 14) ?>
+        </button>
+        <h3 style="font-size:1.35rem; margin-bottom:6px;">Search Hayz Catalog</h3>
+        <p class="text-muted" style="font-size:0.88rem;">Find Moroccan argan oils, rugs, tagines, leather babouches, caftans, and spices.</p>
+        
         <form action="<?= url('shop.php') ?>" method="GET" class="search-form-modal">
-            <input type="text" name="search" id="searchModalInput" class="search-input-modal"
-                placeholder="Type product name, category, or keyword..." required>
-            <button type="submit" class="btn btn-gold">Search</button>
+            <input type="text" name="search" id="searchModalInput" class="search-input-modal" placeholder="Type product name, category, or keyword..." required>
+            <button type="submit" class="btn btn-gold">
+                <?= radix_icon('magnifying-glass', '', 15) ?> Search
+            </button>
         </form>
     </div>
 </div>
 
-<!-- Flash Message Notifications (if any) -->
-<?php $flash = get_flash();
-if ($flash): ?>
+<!-- Flash Message Notifications -->
+<?php $flash = get_flash(); if ($flash): ?>
     <div class="container" style="margin-top: 20px;">
         <div class="alert alert-<?= e($flash['type']) ?>">
+            <?= ($flash['type'] === 'success') ? radix_icon('check-circled', '', 18) : radix_icon('cross-1', '', 18) ?>
             <span><?= e($flash['message']) ?></span>
         </div>
     </div>

@@ -1,9 +1,10 @@
 <?php
 /**
- * MarocShop - Admin Dashboard
+ * MarocShop - Admin Dashboard with Radix UI Icons
  */
 require_once __DIR__ . '/../../config/database.php';
 require_once __DIR__ . '/../../includes/auth.php';
+require_once __DIR__ . '/../../includes/icons.php';
 
 $adminPageTitle = "Store Overview & Performance";
 require_once __DIR__ . '/includes/admin_header.php';
@@ -39,7 +40,9 @@ try {
 <!-- KPI Stat Cards -->
 <div class="stats-grid">
     <div class="stat-card">
-        <div class="stat-icon revenue">💰</div>
+        <div class="stat-icon revenue">
+            <?= radix_icon('wallet', '', 24) ?>
+        </div>
         <div class="stat-info">
             <div class="stat-value"><?= format_price($totalRevenue) ?></div>
             <div class="stat-label">Total Revenue</div>
@@ -47,7 +50,9 @@ try {
     </div>
 
     <div class="stat-card">
-        <div class="stat-icon orders">📦</div>
+        <div class="stat-icon orders">
+            <?= radix_icon('cube', '', 24) ?>
+        </div>
         <div class="stat-info">
             <div class="stat-value"><?= $totalOrders ?></div>
             <div class="stat-label">Total Orders</div>
@@ -55,7 +60,9 @@ try {
     </div>
 
     <div class="stat-card">
-        <div class="stat-icon pending">⏳</div>
+        <div class="stat-icon pending">
+            <?= radix_icon('shield-check', '', 24) ?>
+        </div>
         <div class="stat-info">
             <div class="stat-value"><?= $pendingOrders ?></div>
             <div class="stat-label">Pending Orders</div>
@@ -63,7 +70,9 @@ try {
     </div>
 
     <div class="stat-card">
-        <div class="stat-icon products">🛍️</div>
+        <div class="stat-icon products">
+            <?= radix_icon('backpack', '', 24) ?>
+        </div>
         <div class="stat-info">
             <div class="stat-value"><?= $totalProducts ?></div>
             <div class="stat-label">Total Products</div>
@@ -71,7 +80,9 @@ try {
     </div>
 
     <div class="stat-card">
-        <div class="stat-icon users">👥</div>
+        <div class="stat-icon users">
+            <?= radix_icon('person', '', 24) ?>
+        </div>
         <div class="stat-info">
             <div class="stat-value"><?= $totalUsers ?></div>
             <div class="stat-label">Registered Customers</div>
@@ -80,18 +91,26 @@ try {
 </div>
 
 <!-- Quick Action Shortcuts -->
-<div style="display:flex; gap:12px; margin-bottom:30px; flex-wrap:wrap;">
-    <a href="<?= url('admin/add-product.php') ?>" class="btn btn-gold btn-sm">➕ Add New Product</a>
-    <a href="<?= url('admin/categories.php') ?>" class="btn btn-outline btn-sm">📂 Manage Categories</a>
-    <a href="<?= url('admin/orders.php') ?>" class="btn btn-outline btn-sm">📦 View All Orders</a>
+<div style="display:flex; gap:12px; margin-bottom:28px; flex-wrap:wrap;">
+    <a href="<?= url('admin/add-product.php') ?>" class="btn btn-gold btn-sm">
+        <?= radix_icon('plus', '', 14) ?> Add New Product
+    </a>
+    <a href="<?= url('admin/categories.php') ?>" class="btn btn-outline btn-sm">
+        <?= radix_icon('layers', '', 14) ?> Manage Categories
+    </a>
+    <a href="<?= url('admin/orders.php') ?>" class="btn btn-outline btn-sm">
+        <?= radix_icon('cube', '', 14) ?> View All Orders
+    </a>
 </div>
 
-<div style="display:grid; grid-template-columns: 1.5fr 1fr; gap:30px;" class="admin-dashboard-grid">
+<div style="display:grid; grid-template-columns: 1.5fr 1fr; gap:28px;" class="admin-dashboard-grid">
     <!-- Recent Orders Table -->
     <div class="admin-card">
         <div class="admin-card-header">
             <h2 class="admin-card-title">Recent Customer Orders</h2>
-            <a href="<?= url('admin/orders.php') ?>" class="btn btn-outline btn-sm">View All &rarr;</a>
+            <a href="<?= url('admin/orders.php') ?>" class="btn btn-outline btn-sm">
+                View All <?= radix_icon('chevron-right', '', 13) ?>
+            </a>
         </div>
 
         <div class="admin-table-wrapper">
@@ -124,7 +143,7 @@ try {
                                 </td>
                                 <td>
                                     <a href="<?= url('admin/order-details.php?id=' . $ro['id']) ?>" class="btn btn-outline btn-sm">
-                                        Inspect
+                                        <?= radix_icon('eye-open', '', 13) ?> Inspect
                                     </a>
                                 </td>
                             </tr>
@@ -161,17 +180,17 @@ try {
                                     <div style="display:flex; align-items:center; gap:10px;">
                                         <img src="<?= get_image_url($lp['image']) ?>" alt="" class="table-img" style="width:36px; height:36px;">
                                         <div>
-                                            <strong style="font-size:0.88rem;"><?= e($lp['name']) ?></strong><br>
+                                            <strong style="font-size:0.86rem;"><?= e($lp['name']) ?></strong><br>
                                             <small class="text-muted"><?= e($lp['category_name']) ?></small>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <span class="badge badge-danger" style="font-size:0.8rem;"><?= $lp['stock'] ?> left</span>
+                                    <span class="badge badge-danger" style="font-size:0.75rem;"><?= $lp['stock'] ?> left</span>
                                 </td>
                                 <td>
                                     <a href="<?= url('admin/edit-product.php?id=' . $lp['id']) ?>" class="btn btn-outline btn-sm">
-                                        Restock
+                                        <?= radix_icon('pencil', '', 13) ?> Restock
                                     </a>
                                 </td>
                             </tr>

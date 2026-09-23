@@ -1,9 +1,10 @@
 <?php
 /**
- * MarocShop - Checkout Page & Order Placement
+ * Hayz - Checkout Page & Order Placement
  */
 require_once __DIR__ . '/config/database.php';
 require_once __DIR__ . '/includes/auth.php';
+require_once __DIR__ . '/includes/icons.php';
 
 $cartItems = get_cart_items();
 if (empty($cartItems)) {
@@ -147,7 +148,7 @@ require_once __DIR__ . '/includes/navbar.php';
                 <!-- Shipping Address Form -->
                 <div style="background:var(--bg-card); padding:35px; border-radius:var(--border-radius-md); border:1px solid var(--border-color); box-shadow:var(--shadow-subtle);">
                     <h2 style="font-size:1.35rem; margin-bottom:24px; padding-bottom:12px; border-bottom:1px solid var(--border-color); display:flex; align-items:center; gap:10px;">
-                        <span>📍</span> Shipping & Delivery Details
+                        <span style="color:var(--color-gold);"><?= radix_icon('pin', '', 20) ?></span> Shipping & Delivery Details
                     </h2>
 
                     <div class="form-group">
@@ -158,7 +159,7 @@ require_once __DIR__ . '/includes/navbar.php';
                     <div class="form-grid-2">
                         <div class="form-group">
                             <label class="form-label" for="phone">Phone Number *</label>
-                            <input type="tel" name="phone" id="phone" class="form-control" value="<?= e($phone) ?>" placeholder="e.g. +212 600-112233" required>
+                            <input type="tel" name="phone" id="phone" class="form-control" value="<?= e($phone) ?>" placeholder="e.g. +212 688-212229" required>
                             <small class="text-muted" style="font-size:0.78rem;">Our delivery team will call before arrival.</small>
                         </div>
 
@@ -181,14 +182,14 @@ require_once __DIR__ . '/includes/navbar.php';
                     <!-- Payment Method Section -->
                     <div style="margin-top:30px; padding-top:20px; border-top:1px solid var(--border-color);">
                         <h3 style="font-size:1.2rem; margin-bottom:15px; display:flex; align-items:center; gap:10px;">
-                            <span>💳</span> Payment Method
+                            <span style="color:var(--color-gold);"><?= radix_icon('card-stack', '', 20) ?></span> Payment Method
                         </h3>
 
                         <div style="background:var(--color-gold-light); border:2px solid var(--color-gold); border-radius:var(--border-radius-md); padding:18px 20px; display:flex; align-items:flex-start; gap:14px;">
                             <input type="radio" name="payment_method" id="cod" value="cod" checked style="margin-top:4px; accent-color:var(--color-gold);">
                             <div>
-                                <label for="cod" style="font-weight:700; font-size:1rem; color:#111111; cursor:pointer;">
-                                    💵 Cash on Delivery (Paiement à la livraison)
+                                <label for="cod" style="font-weight:700; font-size:1rem; color:#111111; cursor:pointer; display:flex; align-items:center; gap:8px;">
+                                    <?= radix_icon('card-stack', '', 18) ?> Cash on Delivery (Paiement à la livraison)
                                 </label>
                                 <p style="font-size:0.85rem; color:#555555; margin-top:4px;">
                                     Pay in cash directly to the courier upon delivery and inspection of your package anywhere in Morocco.
@@ -242,12 +243,12 @@ require_once __DIR__ . '/includes/navbar.php';
 
                     <div style="margin-top: 25px;">
                         <button type="submit" class="btn btn-gold btn-lg btn-block">
-                            Confirm & Place Order (<?= format_price($total) ?>)
+                            <?= radix_icon('check-circled', '', 18) ?> Confirm & Place Order (<?= format_price($total) ?>)
                         </button>
                     </div>
 
                     <div style="margin-top: 15px; font-size:0.8rem; color:var(--color-text-muted); text-align:center;">
-                        By placing your order, you agree to MarocShop's terms of service and authentic artisan guarantee.
+                        By placing your order, you agree to Hayz's terms of service and authentic artisan guarantee.
                     </div>
                 </div>
             </div>

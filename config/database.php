@@ -1,6 +1,6 @@
 <?php
 /**
- * MarocShop - Database Configuration & Core Helper Functions
+ * Hayz - Database Configuration & Core Helper Functions
  * Pure Native PHP 8+ PDO Connection
  */
 
@@ -17,7 +17,7 @@ define('DB_PASS', '');
 define('DB_CHARSET', 'utf8mb4');
 
 // Currency & Store Settings
-define('STORE_NAME', 'MarocShop');
+define('STORE_NAME', 'Hayz');
 define('STORE_TAGLINE', 'Authentic Moroccan Treasures & Artisanal Luxury');
 define('CURRENCY_SYMBOL', 'MAD');
 define('SHIPPING_COST', 40.00); // Standard Moroccan domestic express shipping

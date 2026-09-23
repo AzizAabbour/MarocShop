@@ -1,6 +1,6 @@
 <?php
 /**
- * MarocShop - HTML Header Component
+ * Hayz - HTML Header Component
  */
 require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../includes/auth.php';
@@ -15,6 +15,9 @@ $pageDescription = $pageDescription ?? 'Discover authentic Moroccan handcrafted 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="<?= e($pageDescription) ?>">
     <title><?= $pageTitle ?></title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="<?= asset('logo/logo.png') ?>">
     
     <!-- Google Fonts Preconnect & Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

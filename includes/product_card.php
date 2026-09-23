@@ -1,8 +1,10 @@
 <?php
 /**
- * MarocShop - Reusable Product Card Component
+ * MarocShop - Reusable Product Card Component with Radix UI Icons
  * Expects $product array in scope
  */
+require_once __DIR__ . '/icons.php';
+
 if (!isset($product)) return;
 
 $discountPercent = 0;
@@ -27,14 +29,18 @@ $isOutOfStock = ($product['stock'] <= 0);
         </div>
 
         <div class="product-actions-hover">
-            <a href="<?= url('product.php?id=' . $product['id']) ?>" class="btn btn-outline btn-sm" style="flex:1;">View Details</a>
+            <a href="<?= url('product.php?id=' . $product['id']) ?>" class="btn btn-outline btn-sm" style="flex:1;">
+                <?= radix_icon('eye-open', '', 14) ?> Details
+            </a>
             <?php if (!$isOutOfStock): ?>
                 <form action="<?= url('cart.php') ?>" method="POST" class="ajax-add-to-cart" style="flex:1;">
                     <?= csrf_field() ?>
                     <input type="hidden" name="action" value="add">
                     <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
                     <input type="hidden" name="quantity" value="1">
-                    <button type="submit" class="btn btn-gold btn-sm btn-block">Quick Add</button>
+                    <button type="submit" class="btn btn-gold btn-sm btn-block">
+                        <?= radix_icon('backpack', '', 14) ?> Add
+                    </button>
                 </form>
             <?php endif; ?>
         </div>
@@ -66,7 +72,7 @@ $isOutOfStock = ($product['stock'] <= 0);
                     <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
                     <input type="hidden" name="quantity" value="1">
                     <button type="submit" class="btn btn-primary btn-sm btn-block">
-                        <span>🛒</span> Add to Cart
+                        <?= radix_icon('backpack', '', 15) ?> Add to Cart
                     </button>
                 </form>
             <?php endif; ?>

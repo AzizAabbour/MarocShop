@@ -63,15 +63,15 @@ require_once __DIR__ . '/includes/navbar.php';
                 <!-- Guarantee Badges -->
                 <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; margin-top:10px;">
                     <div style="background:var(--bg-card); padding:12px; border-radius:var(--border-radius-sm); border:1px solid var(--border-color); text-align:center;">
-                        <div style="color:var(--color-gold); font-size:1.2rem;">🛡️</div>
+                        <div style="color:var(--color-gold); display:flex; justify-content:center; align-items:center; min-height:26px;"><?= radix_icon('shield-check', '', 22) ?></div>
                         <div style="font-size:0.75rem; font-weight:700; margin-top:4px;">100% Authentic</div>
                     </div>
                     <div style="background:var(--bg-card); padding:12px; border-radius:var(--border-radius-sm); border:1px solid var(--border-color); text-align:center;">
-                        <div style="color:var(--color-gold); font-size:1.2rem;">🚚</div>
+                        <div style="color:var(--color-gold); display:flex; justify-content:center; align-items:center; min-height:26px;"><?= radix_icon('truck', '', 22) ?></div>
                         <div style="font-size:0.75rem; font-weight:700; margin-top:4px;">Fast Morocco Shipping</div>
                     </div>
                     <div style="background:var(--bg-card); padding:12px; border-radius:var(--border-radius-sm); border:1px solid var(--border-color); text-align:center;">
-                        <div style="color:var(--color-gold); font-size:1.2rem;">💵</div>
+                        <div style="color:var(--color-gold); display:flex; justify-content:center; align-items:center; min-height:26px;"><?= radix_icon('card-stack', '', 22) ?></div>
                         <div style="font-size:0.75rem; font-weight:700; margin-top:4px;">Cash on Delivery</div>
                     </div>
                 </div>
@@ -97,9 +97,9 @@ require_once __DIR__ . '/includes/navbar.php';
                 <!-- Stock Status -->
                 <div style="display:flex; align-items:center; gap:10px;">
                     <?php if ($isOutOfStock): ?>
-                        <span class="badge badge-out-of-stock" style="font-size:0.85rem;">⚠️ Currently Out of Stock</span>
+                        <span class="badge badge-out-of-stock" style="font-size:0.85rem; display:inline-flex; align-items:center; gap:5px;"><?= radix_icon('cross-1', '', 14) ?> Currently Out of Stock</span>
                     <?php else: ?>
-                        <span class="badge badge-stock" style="font-size:0.85rem;">✓ In Stock (<?= $product['stock'] ?> units available)</span>
+                        <span class="badge badge-stock" style="font-size:0.85rem; display:inline-flex; align-items:center; gap:5px;"><?= radix_icon('check-circled', '', 14) ?> In Stock (<?= $product['stock'] ?> units available)</span>
                     <?php endif; ?>
                 </div>
 
@@ -128,12 +128,12 @@ require_once __DIR__ . '/includes/navbar.php';
 
                         <div style="display:flex; gap:15px; flex-wrap:wrap;">
                             <button type="submit" class="btn btn-primary btn-lg" style="flex:1; min-width:200px;">
-                                <span>🛒</span> Add to Cart
+                                <?= radix_icon('backpack', '', 18) ?> Add to Cart
                             </button>
                             
                             <!-- Buy Now button (Adds to cart & redirects to checkout) -->
                             <a href="<?= url('cart.php?buy_now=' . $product['id']) ?>" class="btn btn-gold btn-lg" style="flex:1; min-width:200px;">
-                                <span>⚡</span> Buy Now
+                                <?= radix_icon('sparkles', '', 18) ?> Buy Now
                             </a>
                         </div>
                     </form>
