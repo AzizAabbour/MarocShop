@@ -2,8 +2,8 @@
 /**
  * MarocShop - Admin Category Management
  */
-require_once __DIR__ . '/../../config/database.php';
-require_once __DIR__ . '/../../includes/auth.php';
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../includes/auth.php';
 
 $adminPageTitle = "Category Management";
 require_once __DIR__ . '/includes/admin_header.php';
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $fileExt = strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));
             if (in_array($fileExt, ['jpg', 'jpeg', 'png', 'webp', 'svg'])) {
                 $newImg = 'cat_' . time() . '_' . bin2hex(random_bytes(3)) . '.' . $fileExt;
-                if (move_uploaded_file($fileTmp, __DIR__ . '/../../assets/images/' . $newImg)) {
+                if (move_uploaded_file($fileTmp, __DIR__ . '/../assets/images/' . $newImg)) {
                     $imageName = $newImg;
                 }
             }

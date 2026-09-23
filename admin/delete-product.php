@@ -2,8 +2,8 @@
 /**
  * MarocShop - Delete Product Handler
  */
-require_once __DIR__ . '/../../config/database.php';
-require_once __DIR__ . '/../../includes/auth.php';
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../includes/auth.php';
 
 require_admin();
 

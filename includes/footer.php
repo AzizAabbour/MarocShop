@@ -20,7 +20,7 @@ require_once __DIR__ . '/../includes/icons.php';
                 <div style="color:#CCCCCC; font-size:0.88rem; display:flex; flex-direction:column; gap:8px;">
                     <div style="display:flex; align-items:center; gap:8px;">
                         <span style="color:var(--color-gold);"><?= radix_icon('pin', '', 15) ?></span>
-                        <span>Boulevard d'Anfa, Casablanca, Morocco</span>
+                        <span>33°34'12.7"N 7°32'01.1"W — Casablanca, Morocco</span>
                     </div>
                     <div style="display:flex; align-items:center; gap:8px;">
                         <span style="color:var(--color-gold);"><?= radix_icon('phone', '', 15) ?></span>

@@ -2,8 +2,8 @@
 /**
  * MarocShop - Admin Contact Inquiries & Support Inbox
  */
-require_once __DIR__ . '/../../config/database.php';
-require_once __DIR__ . '/../../includes/auth.php';
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../includes/auth.php';
 
 $adminPageTitle = "Customer Contact Messages";
 require_once __DIR__ . '/includes/admin_header.php';

@@ -28,3 +28,21 @@ $pageDescription = $pageDescription ?? 'Discover authentic Moroccan handcrafted 
     <link rel="stylesheet" href="<?= asset('css/style.css') ?>">
 </head>
 <body>
+
+<!-- White Splash Screen with Zoom-Out Logo Animation (On Page Refresh Only) -->
+<div id="splash-screen" class="splash-screen">
+    <script>
+        (function() {
+            var nav = (window.performance && performance.getEntriesByType) ? performance.getEntriesByType('navigation')[0] : null;
+            var isReload = nav ? (nav.type === 'reload') : (window.performance && performance.navigation && performance.navigation.type === 1);
+            if (!isReload) {
+                document.getElementById('splash-screen').style.display = 'none';
+            }
+        })();
+    </script>
+    <div class="splash-content">
+        <img src="<?= asset('logo/logo.png') ?>" alt="Hayz" class="splash-logo">
+        <div class="splash-title" style="color:#BD8432">Hayz</div>
+        <div class="splash-subtitle">AUTHENTIC MOROCCAN LUXURY</div>
+    </div>
+</div>

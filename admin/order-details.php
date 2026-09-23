@@ -2,8 +2,8 @@
 /**
  * MarocShop - Admin Order Details & Status Changer
  */
-require_once __DIR__ . '/../../config/database.php';
-require_once __DIR__ . '/../../includes/auth.php';
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../includes/auth.php';
 
 $orderId = (int)($_GET['id'] ?? 0);
 if ($orderId <= 0) {

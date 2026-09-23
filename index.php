@@ -52,8 +52,16 @@ require_once __DIR__ . '/includes/navbar.php';
 ?>
 
 <main>
-    <!-- Hero Section -->
+    <!-- Hero Section with Background Video & Dark Blur -->
     <section class="hero-section">
+        <div class="hero-video-wrapper">
+            <video class="hero-bg-video" autoplay loop muted playsinline>
+                <source src="<?= asset('videos/hero-shopping.mp4') ?>" type="video/mp4">
+                <source src="https://assets.mixkit.co/videos/6302/6302-720.mp4" type="video/mp4">
+            </video>
+            <div class="hero-video-overlay"></div>
+        </div>
+
         <div class="container hero-grid">
             <div class="hero-text-content">
                 <div class="hero-tag">
@@ -77,17 +85,10 @@ require_once __DIR__ . '/includes/navbar.php';
             </div>
 
             <div class="hero-image-wrapper">
-                <div class="hero-image-card">
-                    <img src="<?= asset('images/hero_banner.svg') ?>" alt="Authentic Moroccan Treasures">
-                    <div class="hero-badge-float">
-                        <div class="icon">
-                            <?= radix_icon('shield-check', '', 20) ?>
-                        </div>
-                        <div>
-                            <div class="title">100% Genuine Certified</div>
-                            <div class="sub">Direct from Moroccan Cooperatives</div>
-                        </div>
-                    </div>
+                <div class="hero-logo-clean-display">
+                    <img src="<?= asset('logo/logo.png') ?>" alt="Hayz Logo" class="hero-clean-logo-img">
+                    <div class="hero-clean-logo-title">HAYZ</div>
+                    <div class="hero-clean-logo-subtitle">AUTHENTIC MOROCCAN LUXURY</div>
                 </div>
             </div>
         </div>

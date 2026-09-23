@@ -3,6 +3,29 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  // 0. Splash Screen (On Page Refresh Only)
+  const splashScreen = document.getElementById('splash-screen');
+  if (splashScreen) {
+    const navEntries = performance.getEntriesByType('navigation');
+    const isReload = (navEntries.length > 0 && navEntries[0].type === 'reload') || (performance.navigation && performance.navigation.type === 1);
+
+    if (isReload) {
+      setTimeout(() => {
+        splashScreen.classList.add('splash-hidden');
+        setTimeout(() => {
+          if (splashScreen.parentNode) {
+            splashScreen.parentNode.removeChild(splashScreen);
+          }
+        }, 600);
+      }, 1100);
+    } else {
+      splashScreen.style.display = 'none';
+      if (splashScreen.parentNode) {
+        splashScreen.parentNode.removeChild(splashScreen);
+      }
+    }
+  }
+
   // 1. Mobile Menu Drawer
   const hamburgerBtn = document.getElementById('hamburgerBtn');
   const mobileDrawer = document.getElementById('mobileDrawer');

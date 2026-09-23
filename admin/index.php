@@ -2,9 +2,9 @@
 /**
  * MarocShop - Admin Dashboard with Radix UI Icons
  */
-require_once __DIR__ . '/../../config/database.php';
-require_once __DIR__ . '/../../includes/auth.php';
-require_once __DIR__ . '/../../includes/icons.php';
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../includes/auth.php';
+require_once __DIR__ . '/../includes/icons.php';
 
 $adminPageTitle = "Store Overview & Performance";
 require_once __DIR__ . '/includes/admin_header.php';

@@ -2,8 +2,8 @@
 /**
  * MarocShop - Admin User & Customer Management
  */
-require_once __DIR__ . '/../../config/database.php';
-require_once __DIR__ . '/../../includes/auth.php';
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../includes/auth.php';
 
 $adminPageTitle = "Registered Users & Customers";
 require_once __DIR__ . '/includes/admin_header.php';

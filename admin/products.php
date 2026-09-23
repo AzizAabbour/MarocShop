@@ -2,9 +2,9 @@
 /**
  * MarocShop - Admin Product Management with Radix UI Icons
  */
-require_once __DIR__ . '/../../config/database.php';
-require_once __DIR__ . '/../../includes/auth.php';
-require_once __DIR__ . '/../../includes/icons.php';
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../includes/auth.php';
+require_once __DIR__ . '/../includes/icons.php';
 
 $adminPageTitle = "Product Catalog Management";
 require_once __DIR__ . '/includes/admin_header.php';

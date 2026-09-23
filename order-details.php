@@ -52,11 +52,12 @@ require_once __DIR__ . '/includes/navbar.php';
         <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--border-radius-lg); padding:40px; box-shadow:var(--shadow-subtle);">
             <!-- Invoice Header -->
             <div class="flex-between" style="padding-bottom:25px; border-bottom:2px solid var(--border-color); margin-bottom:25px; flex-wrap:wrap; gap:20px;">
-                <div>
-                    <div class="brand-logo" style="font-size:1.8rem; margin-bottom:4px;">
-                        <span class="logo-badge">M</span>arocShop
+                <div style="display:flex; align-items:center; gap:12px;">
+                    <img src="<?= asset('logo/logo.png') ?>" alt="Hayz" style="height:48px; width:auto; object-fit:contain;">
+                    <div>
+                        <div style="font-family:var(--font-heading); font-size:1.7rem; font-weight:800; color:var(--bg-dark); line-height:1;">Hayz</div>
+                        <div style="font-size:0.82rem; color:var(--color-text-muted); margin-top:2px;">Authentic Moroccan Treasures</div>
                     </div>
-                    <div style="font-size:0.85rem; color:var(--color-text-muted);">Authentic Moroccan Treasures</div>
                 </div>
                 <div style="text-align:right;">
                     <h2 style="font-size:1.4rem; color:var(--bg-dark);">INVOICE #<?= $order['id'] ?></h2>

@@ -127,8 +127,8 @@ require_once __DIR__ . '/includes/navbar.php';
                         <span style="color:var(--color-gold);"><?= radix_icon('pin', '', 18) ?></span> Casablanca Boutique & Showroom
                     </h3>
                     <div style="font-size:0.92rem; color:var(--color-text-muted); line-height:1.7;">
-                        123 Boulevard d'Anfa, 3rd Floor<br>
-                        Casablanca 20000, Morocco<br>
+                        33°34'12.7"N 7°32'01.1"W<br>
+                        Casablanca, Morocco<br>
                         <span style="display:inline-flex; align-items:center; gap:4px; margin-top:4px;"><?= radix_icon('phone', '', 14) ?> <strong>+212 688-212229</strong></span>
                     </div>
                 </div>

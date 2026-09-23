@@ -17,7 +17,7 @@ $adminPageTitle = $adminPageTitle ?? 'Admin Dashboard';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= e($adminPageTitle) ?> | MarocShop Admin</title>
+    <title><?= e($adminPageTitle) ?> | Hayz Admin</title>
     
     <!-- Fonts & Admin CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

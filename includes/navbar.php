@@ -28,8 +28,8 @@ try {
             <span>Express Delivery across Morocco — <span class="highlight">Cash on Delivery (Paiement à la livraison)</span></span>
         </div>
         <div class="top-bar-links">
-            <span>📞 +212 688-212229</span>
-            <span>✉️ hayzcre@gmail.com</span>
+            <span>Tele: +212 688-212229</span>
+            <span>E-mail: hayzcre@gmail.com</span>
             <?php if (is_admin()): ?>
                 <a href="<?= url('admin/index.php') ?>" style="color:var(--color-gold); font-weight:700;">
                     <?= radix_icon('dashboard', '', 14) ?> Admin Panel
@@ -45,6 +45,7 @@ try {
         <!-- Brand Logo -->
         <a href="<?= url('index.php') ?>" class="brand-logo" aria-label="Hayz Homepage">
             <img src="<?= asset('logo/logo.png') ?>" alt="Hayz" class="brand-logo-img">
+            <span class="brand-name-text" style="color:#BD8432">Hayz</span>
         </a>
 
         <!-- Desktop Navigation Links -->
@@ -75,7 +76,7 @@ try {
                         <span style="color:var(--color-gold); display:flex; align-items:center;">
                             <?= radix_icon('person', '', 16) ?>
                         </span>
-                        <span><?= e(explode(' ', $user['name'])[0]) ?></span>
+                        <span class="user-name-text"><?= e(explode(' ', $user['name'])[0]) ?></span>
                         <small style="font-size:0.7rem; margin-left:2px;">▾</small>
                     </div>
                     <div class="user-dropdown-menu">
@@ -100,7 +101,7 @@ try {
                     </div>
                 </div>
             <?php else: ?>
-                <div style="display:flex; align-items:center; gap:8px;">
+                <div class="nav-auth-buttons">
                     <a href="<?= url('login.php') ?>" class="btn btn-outline btn-sm">Login</a>
                     <a href="<?= url('register.php') ?>" class="btn btn-gold btn-sm">Register</a>
                 </div>

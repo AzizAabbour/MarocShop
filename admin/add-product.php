@@ -2,8 +2,8 @@
 /**
  * MarocShop - Add New Product
  */
-require_once __DIR__ . '/../../config/database.php';
-require_once __DIR__ . '/../../includes/auth.php';
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../includes/auth.php';
 
 $adminPageTitle = "Add New Product";
 require_once __DIR__ . '/includes/admin_header.php';
@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errors[] = "Invalid image file format. Allowed formats: JPG, PNG, WEBP, SVG.";
         } else {
             $newImageName = 'prod_' . time() . '_' . bin2hex(random_bytes(4)) . '.' . $fileExt;
-            $uploadTarget = __DIR__ . '/../../assets/images/' . $newImageName;
+            $uploadTarget = __DIR__ . '/../assets/images/' . $newImageName;
             
             if (move_uploaded_file($fileTmp, $uploadTarget)) {
                 $imageFilename = $newImageName;
